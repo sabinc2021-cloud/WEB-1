@@ -1,0 +1,4 @@
+ "use client";
+import Link from "next/link";import{usePathname}from"next/navigation";
+const links=[["/dashboard","▦","Dashboard"],["/projects","▣","Projects"],["/pull-planning","◆","Pull Planning"],["/lookahead","◫","6-Week Look-Ahead"],["/weekly","✓","Weekly Commitments"],["/constraints","!","Constraints"],["/analytics","↗","PPC & Analytics"],["/team","♙","Team"],["/setup","⚙","Setup"]];
+export default function ClientShell({children}:{children:React.ReactNode}){const p=usePathname();return <div className="shell"><aside className="side"><div className="brand">LPS <span>COMMAND CENTER</span></div><nav>{links.map(x=><Link className={p===x[0]?"active":""} href={x[0]} key={x[0]}><b>{x[1]}</b> {x[2]}</Link>)}<Link href="/login"><b>↪</b> Sign In</Link></nav></aside><main className="main">{children}</main></div>}
